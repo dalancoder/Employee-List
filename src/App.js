@@ -9,14 +9,28 @@ function App() {
   const startIndeks = mevcutSayfa * 5;
   //sayfaveriye mevcut sayfada yer alacak veriyi belirleme
   const sayfaVeri = data.slice(startIndeks, (startIndeks+5));
-  //next butonu yapacakları
-  const handleNext =()=>  
-      setMevcutSayfa(mevcutSayfa+1)
-    
   
-  //Prev butonu yapacağı;
-  const handlePrev = ()=>  
-      setMevcutSayfa(mevcutSayfa-1)
+  
+  //next butonu yapacakları
+  const handleNext =()=>  {
+    if(startIndeks+5<data.length){
+      setMevcutSayfa(mevcutSayfa+1)
+    }else {
+      setMevcutSayfa(0)
+    }
+    
+  }  
+    
+    //Prev butonu yapacağı;
+
+  const handlePrev = ()=>  {
+    if(mevcutSayfa>0){
+        setMevcutSayfa(mevcutSayfa-1)
+    }else{
+      setMevcutSayfa(Math.ceil(data.length/5)-1)
+    }
+  }
+    
 
 
   return (
